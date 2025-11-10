@@ -3,7 +3,8 @@ using UnityEngine;
 public class RayCaster : MonoBehaviour
 {
 
-    private Camera cam;//Camera Object
+ 
+    private Camera cam;
     void Start()
     {
         cam = Camera.main;
@@ -11,7 +12,6 @@ public class RayCaster : MonoBehaviour
 
     void Update()
     {
-        //If the mouse is clicked, the camera moves to that position
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
@@ -20,8 +20,7 @@ public class RayCaster : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 Debug.Log(hit.point);  //point is a position x,y,z  e.g. this.transform.position = hit.point
-            }
+            }       
         }
     }
 }
-
