@@ -1,11 +1,14 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class NavMeshController : MonoBehaviour
 {
     public GameObject Target;
     private NavMeshAgent agent;
+    public GameObject Sword;
+    public GameObject Axe;
 
     bool IsWalking;
 
@@ -28,15 +31,18 @@ public class NavMeshController : MonoBehaviour
             IsWalking = false;
         }
 
-        if(other.tag == "Axe")
+        if (other.name == ("Axe"))
         {
-            Destroy(other.gameObject);
+            Destroy(Axe);
+            Debug.Log("Obtained Axe");
         }
 
-        if(other.tag == "Sword")
+        if (other.name == ("Sword"))
         {
-            Destroy(other.gameObject);
+            Destroy(Sword);
+            Debug.Log("Obtained Sword");
         }
+
     }
     private void OnTriggerExit(Collider other)
     {
