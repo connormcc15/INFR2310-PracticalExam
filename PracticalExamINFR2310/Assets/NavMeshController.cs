@@ -7,6 +7,8 @@ public class NavMeshController : MonoBehaviour
     public GameObject Target;
     private NavMeshAgent agent;
 
+    bool IsWalking;
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -23,14 +25,24 @@ public class NavMeshController : MonoBehaviour
     {
         if (other.name == "Target")
         {
-            //edit here
+            IsWalking = false;
+        }
+
+        if(other.tag == "Axe")
+        {
+            Destroy(other.gameObject);
+        }
+
+        if(other.tag == "Sword")
+        {
+            Destroy(other.gameObject);
         }
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.name == "Target")
         {           
-            //edit here
+            IsWalking = true;
         }
     }
 

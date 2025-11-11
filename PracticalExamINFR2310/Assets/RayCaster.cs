@@ -3,7 +3,8 @@ using UnityEngine;
 public class RayCaster : MonoBehaviour
 {
 
- 
+    [SerializeField] GameObject target;
+    
     private Camera cam;
     void Start()
     {
@@ -15,12 +16,13 @@ public class RayCaster : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit))
+            RaycastHit hit; 
+            
+            if( Physics.Raycast(ray, out hit))
             {
-                Debug.Log(hit.point);  //point is a position x,y,z  e.g. this.transform.position = hit.point
-            }       
+                Debug.Log(hit.point);
+                target.transform.position = hit.point;
+            }
         }
     }
 }
